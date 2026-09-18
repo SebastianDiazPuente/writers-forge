@@ -32,11 +32,21 @@ export function getModelForProvider(
 ): string {
   const effectiveType = settings.useOnlyFastModels ? 'fast' : type;
 
+  // Prefer explicit fastModel / reasoningModel fields set by user
+  if (effectiveType === 'fast' && settings.fastModel?.trim()) {
+    return settings.fastModel.trim();
+  }
+  if (effectiveType === 'reasoning' && settings.reasoningModel?.trim()) {
+    return settings.reasoningModel.trim();
+  }
+
+  // Fallback to custom models map if provided
   if (settings.models?.[provider]) {
     const configured = settings.models[provider]?.[effectiveType];
     if (configured?.trim()) return configured.trim();
   }
 
+  // Use provider's own fast/reasoning defaults if provider matches settings.provider
   if (settings.provider === provider) {
     if (effectiveType === 'reasoning' && settings.reasoningModel?.trim()) {
       return settings.reasoningModel.trim();

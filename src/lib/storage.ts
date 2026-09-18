@@ -38,10 +38,10 @@ export const DEFAULT_AI_SETTINGS: AISettings = {
     openai: '',
     anthropic: '',
   },
-  fastModel: 'gemini-2.5-flash',
-  reasoningModel: 'gemini-2.5-pro',
+  fastModel: 'gemini-3.6-flash',
+  reasoningModel: 'gemini-3.6-pro',
   models: {
-    gemini: { fast: 'gemini-2.5-flash', reasoning: 'gemini-2.5-pro' },
+    gemini: { fast: 'gemini-3.6-flash', reasoning: 'gemini-3.6-pro' },
     openai: { fast: 'gpt-4o-mini', reasoning: 'gpt-4o' },
     anthropic: { fast: 'claude-3-5-haiku-20241022', reasoning: 'claude-3-5-sonnet-20241022' },
   },
