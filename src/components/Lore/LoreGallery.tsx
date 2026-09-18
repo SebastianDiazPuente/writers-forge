@@ -604,17 +604,19 @@ export const LoreGallery: React.FC<LoreGalleryProps> = ({ project }) => {
               {/* Row 2: Aliases, Image URL */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div className="form-group">
-                  <label className="form-label">Alias (separados por coma)</label>
-                  <input
-                    type="text"
-                    value={(editingEntity.aliases || []).join(', ')}
-                    onChange={e => setEditingEntity({
-                      ...editingEntity,
-                      aliases: e.target.value.split(',').map(s => s.trim()).filter(Boolean)
-                    })}
-                    placeholder="Ej. Eldrin, Maestro Eldrin, El Desterrado"
-                    className="form-input"
-                  />
+                    <label className="form-label">Alias (separados por coma)</label>
+                    <input
+                      type="text"
+                      pattern="^[^,]+(,\s*[^,]+)*$"
+                      title="Ingrese alias(s) separados por comas"
+                      value={(editingEntity.aliases || []).join(', ')}
+                      onChange={e => setEditingEntity({
+                        ...editingEntity,
+                        aliases: e.target.value.split(',').map(s => s.trim()).filter(Boolean)
+                      })}
+                      placeholder="Ej. Eldrin, Maestro Eldrin, El Desterrado"
+                      className="form-input"
+                    />
                 </div>
 
                 <div className="form-group">
@@ -643,17 +645,19 @@ export const LoreGallery: React.FC<LoreGalleryProps> = ({ project }) => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Etiquetas (separadas por coma)</label>
-                  <input
-                    type="text"
-                    value={(editingEntity.tags || []).join(', ')}
-                    onChange={e => setEditingEntity({
-                      ...editingEntity,
-                      tags: e.target.value.split(',').map(s => s.trim().replace(/^#/, '')).filter(Boolean)
-                    })}
-                    placeholder="mago, secreto, traidor..."
-                    className="form-input"
-                  />
+                    <label className="form-label">Etiquetas (separadas por coma)</label>
+                    <input
+                      type="text"
+                      pattern="^[^,]+(,\s*[^,]+)*$"
+                      title="Ingrese etiqueta(s) separadas por comas"
+                      value={(editingEntity.tags || []).join(', ')}
+                      onChange={e => setEditingEntity({
+                        ...editingEntity,
+                        tags: e.target.value.split(',').map(s => s.trim().replace(/^#/, '')).filter(Boolean)
+                      })}
+                      placeholder="mago, secreto, traidor..."
+                      className="form-input"
+                    />
                 </div>
               </div>
 
